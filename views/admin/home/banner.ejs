@@ -1,0 +1,164 @@
+<div class="page">
+    <div class="page-main">
+
+        
+
+      
+
+        <!--app-content open-->
+        <div class="app-content main-content mt-0">
+            <div class="side-app">
+
+                <!-- CONTAINER -->
+                <div class="main-container container-fluid">
+
+                        
+                    <!-- PAGE-HEADER -->
+                    <div class="page-header">
+                        <div>
+                            <h1 class="page-title">Home Page</h1>
+                        </div>
+                        <div class="ms-auto pageheader-btn">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="javascript:void(0);">Home Page</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Banner</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!-- PAGE-HEADER END -->
+
+                   
+                   
+
+                   
+
+                    <!-- row -->
+                    <div class="row">
+                       
+                        <div class="col-lg-6 col-md-6">
+                            <div class="card">
+                                <div class="card-header border-bottom">
+                                    <h3 class="card-title">Home Page Banner </h3>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-muted"></p>
+                                    <a href="#" class="btn btn-primary" data-bs-target="#modaldemo1" data-bs-toggle="modal">Add</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /row -->
+    <!-- Row -->
+  
+    <div class="row">
+        <div class="row row-sm">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header border-bottom">
+                        <h3 class="card-title">Hoame Page Banner Datatable</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="editable-responsive-table" class="table editable-table table-nowrap table-bordered table-edit wp-100">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Heading</th>
+                                        <th>Image</th>
+                                        <th>Edit</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><%=banner.id%></td>
+                                        <td><%=banner.bannerhead%></td>
+                                        <td><img src="<%=banner.bannerimage%>" style="height: 5em;"></td>
+                                        <td>   <div class="card-body">
+                                            <p class="text-muted"></p>
+                                            <a href="#" class="btn btn-primary" data-bs-target="#modaldemo2" data-bs-toggle="modal">Edit</a>
+                                        </div>
+                                    </td>
+                                    </tr>
+                                    
+                                  
+                                            <a class="btn btn-primary fs-14 text-white edit-icn" title="Edit">
+                                                <i class="fe fe-edit"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Row -->
+       
+                   
+
+                    
+                </div>
+            </div>
+        </div>
+            <!-- CONTAINER CLOSED -->
+     </div>
+
+
+
+    
+    <!-- Addmodal -->
+    <div id="modaldemo1" class="modal fade">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form action="addhomebanner" method="POST" enctype="multipart/form-data" >
+                <div class="modal-body">
+                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                   
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="banner heading" name="bannerhead" id="bannerhead" required>
+                    </div><!-- form-group -->
+                    <div class="form-group">
+                        <input class="form-control" placeholder="banner image"  id="formFileLg" name="bannerimage" type="file" required>
+                    </div>
+                   
+                    
+                    <button class="btn btn-primary btn-block mt-5" type="submit">Continue</button>
+                </div>
+            </form><!-- modal-body -->
+            </div><!-- modal-content -->
+        </div><!-- modal-dialog -->
+    </div><!--Add modal close -->
+
+      <!--Edit modal close-->
+      <div id="modaldemo2" class="modal fade">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form action="/admin/editbanner/" method="POST" enctype="multipart/form-data" >
+                <div class="modal-body">
+                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                   
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="banner heading" value="<%=banner.bannerhead%>" name="bannerhead" id="bannerhead" required>
+                    </div><!-- form-group -->
+                    <img src="<%=banner.bannerimage%>">
+                    <div class="form-group">
+                        <input class="form-control" placeholder="banner image"  id="formFileLg"  name="bannerimage" type="file" required>
+                    </div>
+                   
+                    
+                    <button class="btn btn-primary btn-block mt-5" type="submit">Save</button>
+                </div>
+            </form><!-- modal-body -->
+            </div><!-- modal-content -->
+        </div><!-- modal-dialog -->
+    </div><!--edit modal close-->
+
+
+</div>
+    `
