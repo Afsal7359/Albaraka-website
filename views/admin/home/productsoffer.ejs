@@ -49,7 +49,7 @@
                     </div>
                     <!-- /row -->
     <!-- Row -->
-  <%if (banner) { %>
+  
     <div class="row">
         <div class="row row-sm">
             <div class="col-lg-12">
@@ -69,24 +69,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <% for (let i = 0; i < banner.length; i++) { %>
-                                        <% let currentBanner = banner[i]; %>
-                                
                                     <tr>
-                                       
-                                            <td><%= i + 1 %></td>
-                                            <td><%= currentBanner.bannerhead %></td>
-                                            <td><img src="<%= currentBanner.bannerimage %>" style="height: 5em;"></td>
-                                            <td>
-                                                <div class="card-body">
-                                                    <p class="text-muted"></p>
-                                                    <a href="#" class="btn btn-primary" data-bs-target="#modaldemo2_<%= i %>" data-bs-toggle="modal">Edit</a>
-                                                </div>
-                                            </td>
-                                     
+                                        <!-- <td><%=banner.id%></td>
+                                        <td><%=banner.bannerhead%></td>
+                                        <td><img src="<%=banner.bannerimage%>" style="height: 5em;"></td>
+                                        <td>   <div class="card-body"> -->
+                                            <p class="text-muted"></p>
+                                            <a href="#" class="btn btn-primary" data-bs-target="#modaldemo2" data-bs-toggle="modal">Edit</a>
+                                        </div>
+                                    </td>
                                     </tr>
-                                    <% } %>
-                                    
                                     
                                   
                                             <a class="btn btn-primary fs-14 text-white edit-icn" title="Edit">
@@ -103,9 +95,6 @@
         </div>
     </div>
     <!-- End Row -->
-<% } else { %>
-    <h1 style="color: red;">Table not found</h1>
-<% } %>
        
                    
 
@@ -123,7 +112,7 @@
     <div id="modaldemo1" class="modal fade">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form action="addhomebanner" method="POST" enctype="multipart/form-data" >
+                <form action="" method="POST" enctype="multipart/form-data" >
                 <div class="modal-body">
                     <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button">
                         <span aria-hidden="true">&times;</span>
@@ -144,44 +133,43 @@
         </div><!-- modal-dialog -->
     </div><!--Add modal close -->
 
+      <!--Edit modal close-->
+      <!-- <div id="modaldemo2" class="modal fade">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form action="/admin/editbanner/"method="POST" enctype="multipart/form-data" onsubmit="return validateForm()" >
+                <div class="modal-body">
+                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                   
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="banner heading" value="<%=banner.bannerhead%>" name="bannerhead" id="bannerhead" required>
+                    </div><!-- form-group -->
+                    <img src="<%=banner.bannerimage%> " id="selectedImage">
+                    <div class="form-group">
+                        <input class="form-control" placeholder="banner image"  id="formFileLg"  name="bannerimage" type="file"  onchange="updateImagePreview(this)" >
+                    </div>
+                   
+                    
+                    <button class="btn btn-primary btn-block mt-5" type="submit">Save</button>
+                </div>
+            </form><!-- modal-body -->
+            </div><!-- modal-content -->
+        </div><!-- modal-dialog -->
+    </div> -->
+    <!--edit modal close-->
 
-    <!-- Editmodal -->
-    <% for (let i = 0; i < banner.length; i++) { %>
-        <% let currentBanner = banner[i]; %>
-        <div id="modaldemo2_<%= i %>" class="modal fade">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <form action="editbanner/<%= currentBanner._id %>"  method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
-                        <div class="modal-body">
-                            <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="banner heading" value="<%= currentBanner.bannerhead %>" name="bannerhead" id="bannerhead" required>
-                            </div><!-- form-group -->
-                            <img src="<%= currentBanner.bannerimage %>"  id="selectedImage<%= currentBanner._id %>" style="height: 14em;">
-                            <div class="form-group">
-                                <input class="form-control" placeholder="banner image" id="formFileLg_<%= i %>" value="selectedImage<%= currentBanner.bannerimage %>" name="bannerimage" type="file" onchange="updateImagePreview(this, 'selectedImage<%= currentBanner._id %>')">
-                            </div>
-                            <button class="btn btn-primary btn-block mt-5" type="submit">Save</button>
-                        </div>
-                    </form><!-- modal-body -->
-                </div><!-- modal-content -->
-            </div><!-- modal-dialog -->
-        </div><!-- edit modal close -->
-    <% } %>
-    
 
 </div>
-    `  <script>
-        function updateImagePreview(input,imageId ) {
+    <!-- `  <script>
+        function updateImagePreview(input) {
             if (input.files && input.files[0]) {
                 const reader = new FileReader();
                 reader.onload = function (e) {
-                    document.getElementById(imageId).src = e.target.result;
+                    document.getElementById('selectedImage').src = e.target.result;
                 };
                 reader.readAsDataURL(input.files[0]);
             }
         }
-    </script>
+    </script> -->
