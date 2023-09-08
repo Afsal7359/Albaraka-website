@@ -98,23 +98,20 @@ Deletehomebanner: async (req, res) => {
 
 
 Addoffproduct: async (req, res) => {
-    try{
+    try {
+        const result = await cloudinary.uploader.upload(req.file.path);
+        const imageurl = result.url;
         
-       
-            const result = await cloudinary.uploader.upload(req.file.path);
-            const imageurl = result.url
-          
-            const { offprohead , offprodescription } = req.body
-    
+        const { offprohead, offprodescription } = req.body;
 
-            await offproduct.create({offprohead,offprodescription,offproimage:imageurl})
-            console.log("Offer Product  Added Sucessfully");
-            res.redirect('/admin/offerproduct'); 
+        await offproduct.create({ offprohead, offprodescription, offproimage: imageurl });
+        console.log("Offer Product Added Successfully");
+        res.redirect('/admin/offproduct');
+    } catch (err) {
+        console.error(err);
+    }
+},
 
-        }catch(err){
-          console.log(err);
-        }
-    },
 
 
 

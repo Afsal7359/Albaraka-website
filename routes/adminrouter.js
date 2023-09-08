@@ -12,7 +12,7 @@ router.post('/addhomebanner',upload.single('bannerimage'),homepagecontroller.Add
 router.post('/edithomebanner/:id',upload.single('bannerimage'),homepagecontroller.edithomebanner);
 router.get('/deletehomebanner/:id',homepagecontroller.Deletehomebanner);
 router.get("/offproduct",homepagecontroller.getoffproduct);
-router.get("/Addoffproduct",homepagecontroller.Addoffproduct);
+router.post("/Addoffproduct",upload.single('offproimage'),homepagecontroller.Addoffproduct);
 
 // router.post('/editbannerimage/:id',upload.single('bannerimage'),homepagecontroller.editbannerimage);
 // router.post("/login",Admincontroller.PostLogin);
