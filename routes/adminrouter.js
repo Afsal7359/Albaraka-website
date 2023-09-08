@@ -7,11 +7,13 @@ const upload=require("../util/multer")
 
 
 router.get("/",Admincontroller.renderDashboard);
-// router.get("/banner",homepagecontroller.homebanner);
-router.get("/banner",homepagecontroller.getbanner);
+router.get("/homebanner",homepagecontroller.gethomebanner);
 router.post('/addhomebanner',upload.single('bannerimage'),homepagecontroller.Addhomebanner)
-router.post('/editbanner/:id',upload.single('bannerimage'),homepagecontroller.editbanner);
-// router.get("/offproduct",homepagecontroller.getoffproduct);
+router.post('/edithomebanner/:id',upload.single('bannerimage'),homepagecontroller.edithomebanner);
+router.get('/deletehomebanner/:id',homepagecontroller.Deletehomebanner);
+router.get("/offproduct",homepagecontroller.getoffproduct);
+router.get("/Addoffproduct",homepagecontroller.Addoffproduct);
+
 // router.post('/editbannerimage/:id',upload.single('bannerimage'),homepagecontroller.editbannerimage);
 // router.post("/login",Admincontroller.PostLogin);
 // router.get("/logout",Admincontroller.AdminLogout);

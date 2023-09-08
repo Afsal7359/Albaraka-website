@@ -1,6 +1,6 @@
 const cloudinary = require('../util/cloudinary')
 const Banner = require('../models/homebanner')
-const offproduct = require('../models/offproductmodel')
+const offproduct = require('../models/offproductmodel');
 
 
 module.exports ={
@@ -11,7 +11,7 @@ module.exports ={
 // homebanner : async (req, res) => {
 //     try {
         
-//          res.render('admin/home/banner', { layout: "adminlayout" });
+//          res.render('admin/home/banner', { layout: "adminlayout"});
      
            
 //         } catch (err) {
@@ -31,86 +31,105 @@ Addhomebanner: async (req, res) => {
     
 
             await Banner.create({bannerhead,bannerimage:imageurl})
-            res.redirect('/admin/bannerhome')
+            console.log("Home Banner  Added Sucessfully");
+            res.redirect('/admin/homebanner'); 
+
         }catch(err){
           console.log(err);
         }
     },
 
 
-    getbanner: async (req, res) => {
+    gethomebanner: async (req, res) => {
         try {
             
             const banner = await Banner.find()
-            console.log(banner,"hello banner");
-            res.render('admin/home/banner', { layout: "adminlayout", banner })
+           res.render('admin/home/banner', { layout: "adminlayout",banner})
            
         } catch (err) {
             console.log(err);
         }
     },
 
+edithomebanner: async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { bannerhead } = req.body;
 
-    editbanner:async(req,res)=>{
-        try {
-        
+        let imageurl = null;
 
-            const { id } = req.params;
-            const { bannerhead } = req.body;
-
-         
+        if (req.file) {
             const result = await cloudinary.uploader.upload(req.file.path);
-         
-            const imageurl = result.url;
-        
-    
-            const updatedBanner = await Banner.findOneAndUpdate(
-                { _id: id }, // Match the document by _id
-                { bannerhead: bannerhead, bannerimage: imageurl }, // Set the new values for bannerhead and bannerimage
-                { new: true } // Return the updated document
-              );
-           console.log("sucessfully updated");
-            res.redirect('/admin/banner');
-        } catch (err) {
-            console.log(err);
+            imageurl = result.url;
         }
-        
+
+        const updatedFields = {};
+
+        if (bannerhead) {
+            updatedFields.bannerhead = bannerhead;
+        }
+
+        if (imageurl) {
+            updatedFields.bannerimage = imageurl;
+        }
+
+        const updatedBanner = await Banner.findOneAndUpdate(
+            { _id: id },
+            { $set: updatedFields },
+            { new: true }
+        );
+
+        console.log("Home Banner Successfully updated");
+        res.redirect('/admin/homebanner');
+    } catch (err) {
+        console.log(err);
     }
+},
+Deletehomebanner: async (req, res) => {
+    try {
+        const { id } = req.params
+        await Banner.findByIdAndDelete({ _id: id });
+        console.log("Home Banner Deleted Sucessfully");
+        res.redirect('/admin/homebanner')
+    } catch (err) {
+        console.log(err);
+    }
+},
 
 
-    // Addhomebanner: async (req, res) => {
-    //     try{
-    //         console.log("haaaaaai");
-          
-    //         console.log(req.file.path);
-           
-    //             const result = await cloudinary.uploader.upload(req.file.path);
-    //             const imageurl = result.url
-    //             console.log(imageurl);
-    //             const { bannerhead } = req.body
-    //             console.log(req.body);
-    
-    //             await offproduct.create({bannerhead,bannerimage:imageurl})
-    //             res.redirect('/admin/bannerhome')
-    //         }catch(err){
-    //           console.log(err);
-    //         }
-    //     },
-    
-
-    
-
-
-// getoffproduct: async (req, res) => {
-//     try {
+Addoffproduct: async (req, res) => {
+    try{
         
-//         const offproduct = await offproduct.findOne()
-//         console.log(offproduct,"hello offproduct");
-//         res.render('admin/home/products', { layout: "adminlayout", offproduct })
        
-//     } catch (err) {
-//         console.log(err);
-//     }
-// },
+            const result = await cloudinary.uploader.upload(req.file.path);
+            const imageurl = result.url
+          
+            const { offprohead , offprodescription } = req.body
+    
+
+            await offproduct.create({offprohead,offprodescription,offproimage:imageurl})
+            console.log("Offer Product  Added Sucessfully");
+            res.redirect('/admin/offerproduct'); 
+
+        }catch(err){
+          console.log(err);
+        }
+    },
+
+
+
+getoffproduct: async (req, res) => {
+    try {
+        
+        // const banner = await offproduct.find()
+       res.render('admin/home/productsoffer', { layout: "adminlayout"})
+       
+    } catch (err) {
+        console.log(err);
+    }
+},
+
+
+
 
 };

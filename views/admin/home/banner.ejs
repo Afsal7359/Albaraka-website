@@ -33,21 +33,29 @@
                    
 
                     <!-- row -->
-                    <div class="row">
-                       
-                        <div class="col-lg-6 col-md-6">
-                            <div class="card">
-                                <div class="card-header border-bottom">
-                                    <h3 class="card-title">Home Page Banner </h3>
-                                </div>
-                                <div class="card-body">
-                                    <p class="text-muted"></p>
-                                    <a href="#" class="btn btn-primary" data-bs-target="#modaldemo1" data-bs-toggle="modal">Add</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /row -->
+<div class="row">
+    <div class="col-lg-6 col-md-6">
+        <div class="card">
+            <div class="card-header border-bottom">
+                <h3 class="card-title">Home Page Banner</h3>
+            </div>
+            <div class="card-body">
+                <p class="text-muted"></p>
+                <!-- Check if there are less than 3 banners before enabling the "Add" button -->
+                <% if (banner.length < 3) { %>
+                <a href="#" class="btn btn-primary" data-bs-target="#modaldemo1" data-bs-toggle="modal">
+                    Add
+                </a>
+                <% } else { %>
+                <!-- Display a message or modal to inform the user that they can't add more banners -->
+                <p style="color: red;">You have reached the maximum item limit. If you want to add more items, you must delete something below.</p>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /row -->
+
     <!-- Row -->
   <%if (banner) { %>
     <div class="row">
@@ -65,7 +73,7 @@
                                         <th>ID</th>
                                         <th>Heading</th>
                                         <th>Image</th>
-                                        <th>Edit</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -80,8 +88,15 @@
                                             <td>
                                                 <div class="card-body">
                                                     <p class="text-muted"></p>
-                                                    <a href="#" class="btn btn-primary" data-bs-target="#modaldemo2_<%= i %>" data-bs-toggle="modal">Edit</a>
-                                                </div>
+                                                    <a  class="btn btn-primary" data-bs-target="#modaldemo2_<%= i %>" data-bs-toggle="modal">Edit</a>
+                                                   <!-- data-bs-target="#modaldemo3_<%= i %>" data-bs-toggle="modal">Delete</a> -->
+                                                   <!-- <a class="btn btn-primary">   <button class="btn btn-danger" onclick="confirmDelete()">Delete</button></a> -->
+                                                   <a href="#" class="btn btn-danger" data-bs-target="#modaldemo3" data-bs-toggle="modal">Delete </a>
+                                                    
+                                               
+                                                </div> 
+                                                
+                                                
                                             </td>
                                      
                                     </tr>
@@ -151,7 +166,7 @@
         <div id="modaldemo2_<%= i %>" class="modal fade">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <form action="editbanner/<%= currentBanner._id %>"  method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+                    <form action="edithomebanner/<%= currentBanner._id %>"  method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
                         <div class="modal-body">
                             <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button">
                                 <span aria-hidden="true">&times;</span>
@@ -170,8 +185,41 @@
                 </div><!-- modal-content -->
             </div><!-- modal-dialog -->
         </div><!-- edit modal close -->
-    <% } %>
+
+
+
+        <!-- Delete Modal -->
+        <div id="modaldemo3" class="modal fade">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                   
+                    <div class="modal-body">
+                        <div class="modal-header" >
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                           </div>
+                           <div class="modal-body">
+                            <p>Are you sure you want to delete?</p>
+                          </div>
+                          <div class="modal-footer">
+                           <button type="button" class="btn btn-secondary" id="close-modal">No</button>
+                            <a href="deletehomebanner/<%= currentBanner._id %>"  class="btn btn-danger" type="button">Yes</a>
+                           </div>
+                
+                </div><!-- modal-content -->
+            </div><!-- modal-dialog -->
+        </div>
+       </div>
     
+        <!-- Delete Modal Close -->
+
+
+    <% } %>
+
+  
+   
 
 </div>
     `  <script>
@@ -184,4 +232,15 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
+
+        function confirmDelete() {
+    if (window.confirm("Are you sure you want to delete this item?")) {
+        // If the user clicks OK in the confirmation dialog, proceed with deletion
+        // You can put your deletion logic here
+        // For example, you can make an AJAX request to delete the item on the server
+        // or perform any other necessary actions.
+    } else {
+        // If the user clicks Cancel, do nothing or provide feedback.
+    }
+}
     </script>
