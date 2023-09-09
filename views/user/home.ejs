@@ -17,18 +17,26 @@
             "delay": 5000
             }}'>
             <div class="swiper-wrapper">
-
+                <%if (banner) { %>
                 <div class="swiper-slide">
+                    <% if(banner[0].bannerimage){%>
                     <div class="image-layer-three"
+                        style="background-image: url(<%=banner[0].bannerimage%>);"></div>
+                    <%} else{%>
+                        <div class="image-layer-three"
                         style="background-image: url(assets/images/backgrounds/1.jpg);"></div>
-                    <!-- /.image-layer -->
+                    <%} %>
+                        <!-- /.image-layer -->
                     <div class="container">
                         <div class="row">
                             <div class="col-xl-12">
                                 <div class="main-slider-three__content">
-                                    
-                                    <h2 class="main-slider-three__title">Welcome to <br> WAHAT AL BARAKA <br> SWEETS
-                                        </h2>
+                                    <%if(banner[0].bannerhead){%>
+                                    <h2 class="main-slider-three__title"><%=banner[0].bannerhead%> </h2>
+                                        
+                                        <%} else{%>
+                                        <h2>npo heading</h2>
+                                    <%} %>
                                     <div class="main-slider-three__btn-box">
                                         <a href="about.html" class="main-slider-three__btn thm-btn">Discover
                                             More</a>
@@ -38,16 +46,55 @@
                         </div>
                     </div>
                 </div>
+                <% } %>
+
+
+
+                <%if (banner) { %>
+                    <div class="swiper-slide">
+                        <% if(banner[1].bannerimage){%>
+                        <div class="image-layer-three"
+                            style="background-image: url(<%=banner[1].bannerimage%>);"></div>
+                        <%} else{%>
+                            <div class="image-layer-three"
+                            style="background-image: url(assets/images/backgrounds/1.jpg);"></div>
+                        <%} %>
+                            <!-- /.image-layer -->
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="main-slider-three__content">
+                                        
+                                        <h2 class="main-slider-three__title">grrrrr to <br> WAHAT AL BARAKA <br> SWEETS
+                                            </h2>
+                                        <div class="main-slider-three__btn-box">
+                                            <a href="about.html" class="main-slider-three__btn thm-btn">Discover
+                                                More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+
+
+         <%if (banner) { %>
                 <div class="swiper-slide">
+                    <% if(banner[2].bannerimage){%>
                     <div class="image-layer-three"
-                        style="background-image: url(assets/images/backgrounds/2.jpg);"></div>
-                    <!-- /.image-layer -->
+                        style="background-image: url(<%=banner[2].bannerimage%>);"></div>
+                    <%} else{%>
+                        <div class="image-layer-three"
+                        style="background-image: url(assets/images/backgrounds/1.jpg);"></div>
+                    <%} %>
+                        <!-- /.image-layer -->
                     <div class="container">
                         <div class="row">
                             <div class="col-xl-12">
                                 <div class="main-slider-three__content">
                                     
-                                    <h2 class="main-slider-three__title">best quality <br> of Delicious <br> Sweets
+                                    <h2 class="main-slider-three__title">hello to <br> WAHAT AL BARAKA <br> SWEETS
                                         </h2>
                                     <div class="main-slider-three__btn-box">
                                         <a href="about.html" class="main-slider-three__btn thm-btn">Discover
@@ -58,27 +105,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="image-layer-three"
-                        style="background-image: url(assets/images/backgrounds/3.jpg);"></div>
-                    <!-- /.image-layer -->
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <div class="main-slider-three__content">
-                                    
-                                    <h2 class="main-slider-three__title">Chocolates and <br> Sugar candies <br>
-                                        </h2>
-                                    <div class="main-slider-three__btn-box">
-                                        <a href="about.html" class="main-slider-three__btn thm-btn">Discover
-                                            More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <% } %>
+
             </div>
+           
 
             <!-- If we need navigation buttons -->
             <div class="main-slider__nav">
