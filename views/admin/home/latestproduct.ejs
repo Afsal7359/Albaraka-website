@@ -21,7 +21,7 @@
                         <div class="ms-auto pageheader-btn">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="javascript:void(0);">Home Page</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Banner</li>
+                                <li class="breadcrumb-item active" aria-current="page">Latest product</li>
                             </ol>
                         </div>
                     </div>
@@ -33,37 +33,37 @@
                    
 
                     <!-- row -->
-<div class="row">
-    <div class="col-lg-6 col-md-6">
-        <div class="card">
-            <div class="card-header border-bottom">
-                <h3 class="card-title">Home Page Banner</h3>
-            </div>
-            <div class="card-body">
-                <p class="text-muted"></p>
-                <!-- Check if there are less than 3 banners before enabling the "Add" button -->
-                <% if (banner.length < 3) { %>
-                <a href="#" class="btn btn-primary" data-bs-target="#modaldemo1" data-bs-toggle="modal">
-                    Add
-                </a>
-                <% } else { %>
-                <!-- Display a message or modal to inform the user that they can't add more banners -->
-                <p style="color: red;">You have reached the maximum item limit. If you want to add more items, you must delete something below.</p>
-                <% } %>
-            </div>
-        </div>
-    </div>
-</div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="card">
+                                <div class="card-header border-bottom">
+                                    <h3 class="card-title">Home Page Latest Product</h3>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-muted"></p>
+                                    <!-- Check if there are less than 3 banners before enabling the "Add" button -->
+                                    <% if (latestproducts.length < 4) { %>
+                                    <a href="#" class="btn btn-primary" data-bs-target="#modaldemo1" data-bs-toggle="modal">
+                                        Add
+                                    </a>
+                                    <% } else { %>
+                                    <!-- Display a message or modal to inform the user that they can't add more banners -->
+                                    <p style="color: red;">You have reached the maximum item limit. If you want to add more items, you must delete something below.</p>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 <!-- /row -->
 
-    <!-- Row -->
-  <%if (banner) { %>
+   <!-- Row -->
+   <%if (latestproducts) { %>
     <div class="row">
         <div class="row row-sm">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header border-bottom">
-                        <h3 class="card-title">Hoame Page Banner Datatable</h3>
+                        <h3 class="card-title">Hoame Page latest product Datatable</h3>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -73,18 +73,20 @@
                                         <th>ID</th>
                                         <th>Heading</th>
                                         <th>Image</th>
+                                        <th>Description</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <% for (let i = 0; i < banner.length; i++) { %>
-                                        <% let currentBanner = banner[i]; %>
+                                    <% for (let i = 0; i < latestproducts.length; i++) { %>
+                                        <% let currentlatestproducts = latestproducts[i]; %>
                                 
                                     <tr>
                                        
                                             <td><%= i + 1 %></td>
-                                            <td><%= currentBanner.bannerhead %></td>
-                                            <td><img src="<%= currentBanner.bannerimage %>" style="height: 5em;"></td>
+                                            <td><%= currentlatestproducts.latprohead %></td>
+                                            <td><%= currentlatestproducts.latprodescription %></td>
+                                            <td><img src="<%= currentlatestproducts.latproimage %>" style="height: 5em;"></td>
                                             <td>
                                                 <div class="card-body">
                                                     <p class="text-muted"></p>
@@ -120,10 +122,10 @@
     <h1 style="color: red;">Table not found</h1>
 <% } %>
        
-                   
 
-                    
-                </div>
+
+
+       </div>
             </div>
         </div>
             <!-- CONTAINER CLOSED -->
@@ -131,22 +133,31 @@
 
 
 
+
+                   
+
+                    
+         
+
     
     <!-- Addmodal -->
     <div id="modaldemo1" class="modal fade">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form action="addhomebanner" method="POST" enctype="multipart/form-data" >
+                <form action="addlatestproduct" method="POST" enctype="multipart/form-data" >
                 <div class="modal-body">
                     <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button">
                         <span aria-hidden="true">&times;</span>
                     </button>
                    
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="banner heading" name="bannerhead" id="bannerhead" required>
-                    </div><!-- form-group -->
+                        <input type="text" class="form-control" placeholder="latest product name " name="latprohead" id="latprohead" required>
+                    </div>
                     <div class="form-group">
-                        <input class="form-control" placeholder="banner image"  id="formFileLg" name="bannerimage" type="file" required>
+                        <input type="text" class="form-control" placeholder="latest product Description" name="latprodescription" id="latprodescription" required style="height: 15em;">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" placeholder="latest product image"  id="formFileLg" name="latproimage" type="file" required>
                     </div>
                    
                     
@@ -158,24 +169,29 @@
     </div><!--Add modal close -->
 
 
+        
     <!-- Editmodal -->
-    <% for (let i = 0; i < banner.length; i++) { %>
-        <% let currentBanner = banner[i]; %>
+    <% for (let i = 0; i < latestproducts.length; i++) { %>
+        <% let currentlatestproducts = latestproducts[i]; %>
         <div id="modaldemo2_<%= i %>" class="modal fade">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <form action="edithomebanner/<%= currentBanner._id %>"  method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+                    <form action="editlatestproduct/<%= currentlatestproducts._id %>"  method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
                         <div class="modal-body">
                             <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="banner heading" value="<%= currentBanner.bannerhead %>" name="bannerhead" id="bannerhead" >
-                            </div><!-- form-group -->
-                            <img src="<%= currentBanner.bannerimage %>"  id="selectedImage<%= currentBanner._id %>" style="height: 14em;">
+                                <input type="text" class="form-control" placeholder="latest product heading" value="<%= currentlatestproducts.latprohead %>" name="latprohead" id="latprohead" >
+                            </div>
+                            
                             <div class="form-group">
-                                <input class="form-control" placeholder="banner image" id="formFileLg_<%= i %>" value="selectedImage<%= currentBanner.bannerimage %>" name="bannerimage" type="file" onchange="updateImagePreview(this, 'selectedImage<%= currentBanner._id %>')">
+                                <input type="text" class="form-control" placeholder="latest product  description" value="<%= currentlatestproducts.latprodescription %>" name="latprodescription" id="latprodescription" >
+                            </div>
+                            <img src="<%= currentlatestproducts.latproimage %>"  id="selectedImage<%= currentlatestproducts._id %>" style="height: 14em;">
+                            <div class="form-group">
+                                <input class="form-control" placeholder="banner image" id="formFileLg_<%= i %>" value="selectedImage<%= currentlatestproducts.latproimage %>" name="latproimage" type="file" onchange="updateImagePreview(this, 'selectedImage<%= currentlatestproducts._id %>')">
                             </div>
                             <button class="btn btn-primary btn-block mt-5" type="submit">Save</button>
                         </div>
@@ -203,7 +219,7 @@
                           </div>
                           <div class="modal-footer">
                            <button type="button" class="btn btn-secondary" id="close-modal">No</button>
-                            <a href="deletehomebanner/<%= currentBanner._id %>"  class="btn btn-danger" type="button">Yes</a>
+                            <a href="deletelatestproduct/<%= currentlatestproducts._id %>"  class="btn btn-danger" type="button">Yes</a>
                            </div>
                 
                 </div><!-- modal-content -->
@@ -215,9 +231,6 @@
 
 
     <% } %>
-
-  
-   
 
 </div>
     `  <script>

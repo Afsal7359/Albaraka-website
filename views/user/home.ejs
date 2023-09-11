@@ -17,37 +17,35 @@
             "delay": 5000
             }}'>
             <div class="swiper-wrapper">
-                <%if (banner) { %>
-                <div class="swiper-slide">
-                    <% if(banner[0].bannerimage){%>
-                    <div class="image-layer-three"
-                        style="background-image: url(<%=banner[0].bannerimage%>);"></div>
-                    <%} else{%>
-                        <div class="image-layer-three"
-                        style="background-image: url(assets/images/backgrounds/1.jpg);"></div>
-                    <%} %>
+                <% if (banner) { %>
+                    <div class="swiper-slide">
+                        <% if (banner[0].bannerimage) { %>
+                            <div class="image-layer-three" style="background-image: url(<%=banner[0].bannerimage%>);"></div>
+                        <% } else { %>
+                            <div class="image-layer-three" style="background-image: url(assets/images/backgrounds/1.jpg);"></div>
+                        <% } %>
                         <!-- /.image-layer -->
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <div class="main-slider-three__content">
-                                    <%if(banner[0].bannerhead){%>
-                                    <h2 class="main-slider-three__title"><%=banner[0].bannerhead%> </h2>
-                                        
-                                        <%} else{%>
-                                        <h2>npo heading</h2>
-                                    <%} %>
-                                    <div class="main-slider-three__btn-box">
-                                        <a href="about.html" class="main-slider-three__btn thm-btn">Discover
-                                            More</a>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="main-slider-three__content">
+                                        <% if (banner[0].bannerhead) { %>
+                                            <h2 class="main-slider-three__title"><%=banner[0].bannerhead%></h2>
+                                        <% } else { %>
+                                            <h2>no heading</h2>
+                                        <% } %>
+                                        <div class="main-slider-three__btn-box">
+                                            <a href="about.html" class="main-slider-three__btn thm-btn">Discover More</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                <% } else { %>
+                    <h1>haaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaai<br>hai<br>haaaaaaaaaaaaaaaaaaaaaaaaaaaaai<br>haaiiiiiiiiiiiiiiiiiiii<br></h1>
                 <% } %>
-
+                
 
 
                 <%if (banner) { %>
@@ -64,12 +62,13 @@
                             <div class="row">
                                 <div class="col-xl-12">
                                     <div class="main-slider-three__content">
-                                        
-                                        <h2 class="main-slider-three__title">grrrrr to <br> WAHAT AL BARAKA <br> SWEETS
-                                            </h2>
+                                        <% if (banner[0].bannerhead) { %>
+                                            <h2 class="main-slider-three__title"><%=banner[1].bannerhead%></h2>
+                                        <% } else { %>
+                                            <h2>no heading</h2>
+                                        <% } %>
                                         <div class="main-slider-three__btn-box">
-                                            <a href="about.html" class="main-slider-three__btn thm-btn">Discover
-                                                More</a>
+                                            <a href="about.html" class="main-slider-three__btn thm-btn">Discover More</a>
                                         </div>
                                     </div>
                                 </div>
@@ -93,12 +92,13 @@
                         <div class="row">
                             <div class="col-xl-12">
                                 <div class="main-slider-three__content">
-                                    
-                                    <h2 class="main-slider-three__title">hello to <br> WAHAT AL BARAKA <br> SWEETS
-                                        </h2>
+                                    <% if (banner[0].bannerhead) { %>
+                                        <h2 class="main-slider-three__title"><%=banner[2].bannerhead%></h2>
+                                    <% } else { %>
+                                        <h2>no heading</h2>
+                                    <% } %>
                                     <div class="main-slider-three__btn-box">
-                                        <a href="about.html" class="main-slider-three__btn thm-btn">Discover
-                                            More</a>
+                                        <a href="about.html" class="main-slider-three__btn thm-btn">Discover More</a>
                                     </div>
                                 </div>
                             </div>

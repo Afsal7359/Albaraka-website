@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const homebannerSchema = new mongoose.Schema({
     bannerhead: {
         type: String,
-        required: true,
+        required:[true,'Please add a heading'],
         trim: true
     },
     bannerimage: {
