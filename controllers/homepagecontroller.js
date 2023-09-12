@@ -305,7 +305,7 @@ editArticle : async (req, res) => {
         }
 
         if (imageurl) {
-            updatedFields.articleimage = articleimage;
+            updatedFields.articleimage = imageurl;
         }
 
         const updatedArticle = await article.findOneAndUpdate(
@@ -323,7 +323,6 @@ editArticle : async (req, res) => {
 },
 DeleteArticle: async (req, res) => {
     try {
-        const { id } = req.params
         await article.findByIdAndDelete({ _id: id });
         console.log("Article Deleted Sucessfully");
         res.redirect('/admin/article')
