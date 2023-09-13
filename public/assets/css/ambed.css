@@ -1016,7 +1016,16 @@ ul {
     display: none !important;
   }
 }
-
+@media (min-width: 1200px) {
+  .bigscreen{
+      display: none;
+  }
+}
+@media (max-width: 1200px){
+  .mobile{
+      display: block;
+  }
+}
 .stricky-header.stricky-fixed {
   -webkit-transform: translateY(0);
   transform: translateY(0);
