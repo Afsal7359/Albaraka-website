@@ -6,24 +6,23 @@ var router = express.Router();
 router.get('/', usercontroller.userHome);
 
 /* GET About page. */
-router.get('/about', function(req, res, next) {
-  res.render('user/about');
-});
+router.get('/about',usercontroller.userabout );
 
-/* GET Blog page. */
-router.get('/blog', function(req, res, next) {
-  res.render('user/blog');
-});
+/* GET gallery page. */
+router.get('/gallery',usercontroller.usergallery);
+
+/* GET Gifting page. */
+router.get('/gifting',usercontroller.usergifting );
+
+// GET  Blog Page
+router.get('/blog',usercontroller.userblog);
 
 /* GET contact page. */
 router.get('/contact', function(req, res, next) {
   res.render('user/contact');
 });
 
-/* GET gallery page. */
-router.get('/gallery', function(req, res, next) {
-  res.render('user/gallery');
-});
+
 
 /* GET service page. */
 router.get('/services', function(req, res, next) {

@@ -1,14 +1,19 @@
+
 const  adminlogin  = require("../models/adminlogin");
 
 
 
 module.exports={
 
+
     GetLogin: async (req, res) => {
         try {
-          
-                res.render('admin/login', { layout: "adminlayout" });
-                
+            if (req.session.adminloggedIn) {
+                res.redirect('/admin')
+            } else {
+                res.render('admin/login', { layout: "adminlayout", adminlogin: true,adminlogErr:req.session.admlogErr });
+                req.session.admlogErr=false;
+            }
         } catch (err) {
             console.log(err);
             // Handle the error appropriately, such as sending an error response to the client
@@ -16,14 +21,13 @@ module.exports={
     },
     PostLogin: async (req, res) => {
         try {
-            console.log(req.body);
             const { email, password } = req.body;
 
             const loginadmin = await adminlogin.findOne({ email });
             if (!loginadmin) {
                 // res.render('admin/login', { layout: "adminlayout", adminlogin: true });
-               
-                res.redirect('/login')
+                req.session.admlogErr = "email does not exist....";
+                res.redirect('/admin/login')
             }
             let passwordCorrect
             if(password===loginadmin.password){
@@ -33,10 +37,13 @@ module.exports={
             }
             // const passwordCorrect = await bcrypt.compare(password, loginadmin.password);
             if (!passwordCorrect) {
-             
-                res.redirect('/login')
+                // res.render('admin/login', { layout: "adminlayout", adminlogin: true });
+                req.session.admlogErr = "incorrect password....";
+                res.redirect('/admin/login')
             } else {
-              
+                req.session.admin = email;
+                req.session.adminloggedIn = true;
+                req.session.admlogErr=false;
                 res.redirect('/admin')
             }
 
@@ -50,7 +57,7 @@ module.exports={
     },
     AdminLogout: async (req, res) => {
         try {
-          
+            req.session.adminloggedIn = false;
             res.redirect('/admin/login')
         } catch (err) {
             console.log(err);

@@ -19,6 +19,22 @@ Addcontact: async (req, res) => {
         }
     },
 
+ Addcontactpage: async (req, res) => {
+        try{
+            console.log("ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd");
+            
+                const { name,phone,email,subject,message} = req.body
+                
+                await contact.create({name,email,phone,subject,message})
+                console.log("contact details  Added Sucessfully");
+                res.redirect('/'); 
+    
+            }catch(err){
+              console.log(err);
+            }
+        },
+    
+
     Getcontact: async (req, res) => {
         try {
             const contacts = await contact.find()

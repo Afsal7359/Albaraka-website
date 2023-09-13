@@ -7,7 +7,8 @@ const dotenv=require('dotenv')
 const expressEjsLayouts = require('express-ejs-layouts');
 const AdminRouter = require('./routes/adminrouter')
 var userRouter = require('./routes/userrouter');
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const session = require('express-session');
 
 
 var app = express();
@@ -22,6 +23,11 @@ app.use(expressEjsLayouts)
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({resave:false,saveUninitialized: true,secret:"key",cookie:{maxAge:6000000}}));
+app.use(function (req, res, next) {
+  res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+  next();
+});
 
 app.use('/', userRouter);
 app.use("/admin",AdminRouter);

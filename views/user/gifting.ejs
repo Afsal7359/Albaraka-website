@@ -1,49 +1,48 @@
-
         <!--Page Header Start-->
         <section class="page-header">
-            <div class="page-header-bg" style="background-image: url(assets/images/backgrounds/1.jpg)">
+            <div class="page-header-bg" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg)">
             </div>
             <div class="container">
                 <div class="page-header__inner">
                     <ul class="thm-breadcrumb list-unstyled">
                         <li><a href="index.html">Home</a></li>
                         <li><span>/</span></li>
-                        <li>Gallery</li>
+                        <li>Gifting</li>
                     </ul>
-                    <h2>Gallery</h2>
+                    <h2>Gifting</h2>
                 </div>
             </div>
         </section>
         <!--Page Header End-->
 
-        <!--Gallery Page Start-->
-        <% if (gallerys) { %>
-            <section class="gallery-page">
+        <!--Services Page Start-->
+        <% if(giftings) { %>
+            <section class="services-page">
                 <div class="container">
                     <div class="row">
-                        <% for (var i = 0; i < gallerys.length; i++) { %>
-                        <div class="col-xl-4 col-lg-4 col-md-4">
-                            <!--Gallery Page Single-->
-                            <div class="gallery-page__single">
-                                <div class="gallery-page__img">
-                                    <img src="<%= gallerys[i].sweetproimage %>" alt="">
-                                    <div class="gallery-page__icon">
-                                        <a class="img-popup" href="<%= gallerys[i].sweetproimage %>"><span class="icon-plus-symbol"></span></a>
+                        <!--Services One Single-->
+                        <% for (var i = 0; i < giftings.length; i++) { %>
+                        <div class="col-xl-4 col-lg-4 col-md-6">
+                            <div class="services-one__single wow fadeInUp" data-wow-delay="100ms">
+                                <div class="services-one__img">
+                                    <img src="<%= giftings[i].giftproimage %>" alt="">
+                                    <div class="services-one__icon">
+                                        <span class="icon-wallpaper-3"></span>
                                     </div>
+                                </div>
+                                <div class="services-one__content">
+                                    <h3 class="services-one__title"><a href="room-wallpapers.html"><%= giftings[i].giftprohead %></a></h3>
+                                    <p class="services-one__text"><%= giftings[i].giftprodescription %></p>
                                 </div>
                             </div>
                         </div>
-                        <% if ((i + 1) % 3 === 0 && i !== 0) { %>
-                        </div>
-                        <div class="row">
-                        <% } %>
                         <% } %>
                     </div>
                 </div>
             </section>
             <% } %>
             
-        <!--Gallery Page End-->
+        <!--Services Page End-->
 
 
         <!--Newsletter Start-->

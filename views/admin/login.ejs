@@ -1,5 +1,5 @@
 	<!-- PAGE -->
-    <div class="page">
+    <div class="page" style="background-color:black;">
         <div>
             <!-- CONTAINER OPEN -->
             <div class="col col-login mx-auto text-center">
@@ -12,8 +12,15 @@
                     <div class="card-body">
                         <form class="login100-form validate-form" action="/admin/login" method="post">
                             <span class="login100-form-title">
-                                Registration
+                               Admin Login
+                              
                             </span>
+                            <div style="text-align: center;">
+                            <% if (adminlogErr) { %>
+                                <!-- Code to be rendered if the condition is true -->
+                                <p style="color: red;"><%= adminlogErr %></p>
+                                <% } %>
+                            </div>
                            
                             <div class="wrap-input100 validate-input" data-bs-validate = "Valid email is required: ex@abc.xyz">
                                 <input class="input100" type="text" name="email" placeholder="name@example.com">
@@ -34,23 +41,12 @@
                                  <button type="submit">Login</button>   
                                
                             </div>
+                          
                            
                            
                         </form>
                     </div>
-                    <div class="card-footer">
-                        <div class="d-flex justify-content-center my-3">
-                            <a href="javascript:void(0)" class="social-login  text-center me-4">
-                                <i class="fa fa-google"></i>
-                            </a>
-                            <a href="javascript:void(0)" class="social-login  text-center me-4">
-                                <i class="fa fa-facebook"></i>
-                            </a>
-                            <a href="javascript:void(0)" class="social-login  text-center">
-                                <i class="fa fa-twitter"></i>
-                            </a>
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
             <!-- CONTAINER CLOSED -->

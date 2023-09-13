@@ -31,7 +31,7 @@
                                 <div class="section-title__line"></div>
                             </div>
                             <div class="contact-page__form">
-                                <form action="https://ambed-html.vercel.app/main-html/assets/inc/sendemail.php" class="comment-one__form contact-form-validated"
+                                <form action="admin/addcontact" method="post" class="comment-one__form contact-form-validated"
                                     novalidate="novalidate">
                                     <div class="row">
                                         <div class="col-xl-6">
@@ -46,12 +46,12 @@
                                         </div>
                                         <div class="col-xl-6">
                                             <div class="comment-form__input-box">
-                                                <input type="text" placeholder="Phone number" name="Phone">
+                                                <input type="text" placeholder="Phone number" name="phone">
                                             </div>
                                         </div>
                                         <div class="col-xl-6">
                                             <div class="comment-form__input-box">
-                                                <input type="text" placeholder="Subject" name="Subject">
+                                                <input type="text" placeholder="Subject" name="subject">
                                             </div>
                                         </div>
                                     </div>
@@ -61,8 +61,7 @@
                                                 <textarea name="message" placeholder="Write a message"></textarea>
                                             </div>
                                             <div class="comment-form__btn-box">
-                                                <button type="submit" class="thm-btn comment-form__btn">Send a
-                                                    Message</button>
+                                                <button type="submit" class="thm-btn comment-form__btn">Submit</button>
                                             </div>
                                         </div>
                                     </div>

@@ -323,6 +323,7 @@ editArticle : async (req, res) => {
 },
 DeleteArticle: async (req, res) => {
     try {
+        const{id}=req.params
         await article.findByIdAndDelete({ _id: id });
         console.log("Article Deleted Sucessfully");
         res.redirect('/admin/article')
