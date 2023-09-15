@@ -54,7 +54,7 @@
                                                 <div class="card-body">
                                                     <p class="text-muted"></p>
                                                    
-                                                   <a href="#" class="btn btn-danger" data-bs-target="#modaldemo3" data-bs-toggle="modal">Delete </a>
+                                                   <a href="#" class="btn btn-danger" data-bs-target="#modaldemo3_<%= i %>" data-bs-toggle="modal">Delete </a>
                                                     
                                                
                                                 </div> 
@@ -94,7 +94,7 @@
             <% for (let i = 0; i < contacts.length; i++) { %>
                 <% let currentcontact = contacts[i]; %>                       
 <!-- Delete Modal -->                
-<div id="modaldemo3" class="modal fade">
+<div id="modaldemo3_<%= i %>" class="modal fade">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
            

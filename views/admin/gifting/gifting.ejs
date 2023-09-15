@@ -91,7 +91,7 @@
                                                     <a  class="btn btn-primary" data-bs-target="#modaldemo2_<%= i %>" data-bs-toggle="modal">Edit</a>
                                                    <!-- data-bs-target="#modaldemo3_<%= i %>" data-bs-toggle="modal">Delete</a> -->
                                                    <!-- <a class="btn btn-primary">   <button class="btn btn-danger" onclick="confirmDelete()">Delete</button></a> -->
-                                                   <a href="#" class="btn btn-danger" data-bs-target="#modaldemo3" data-bs-toggle="modal">Delete </a>
+                                                   <a href="#" class="btn btn-danger" data-bs-target="#modaldemo3_<%= i %>" data-bs-toggle="modal">Delete </a>
                                                     
                                                
                                                 </div> 
@@ -198,10 +198,14 @@
             </div><!-- modal-dialog -->
         </div><!-- edit modal close -->
 
+        <% } %>
 
 
+
+        <% for (let i = 0; i < giftingproducts.length; i++) { %>
+            <% let currentgiftingproducts = giftingproducts[i]; %>
         <!-- Delete Modal -->
-        <div id="modaldemo3" class="modal fade">
+        <div id="modaldemo3_<%= i %>" class="modal fade">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                    
@@ -224,11 +228,11 @@
             </div><!-- modal-dialog -->
         </div>
        </div>
-    
+       <% } %>
+
         <!-- Delete Modal Close -->
 
 
-    <% } %>
 
 </div>
     `  <script>

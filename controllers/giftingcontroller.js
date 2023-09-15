@@ -71,6 +71,7 @@ Addgifting: async (req, res) => {
     Deletegifting: async (req, res) => {
         try {
             const { id } = req.params
+            console.log(id,"fhgsdfgdghfxg");
             await gifting.findByIdAndDelete({ _id: id });
             console.log("gifting Deleted Sucessfully");
             res.redirect('/admin/gifting')
